@@ -36,6 +36,14 @@ class RedFilter(Filter):
         return r, g, b
 
 
+class Purple(Filter):
+    def apply_to_pixel(self, r: int, g: int, b: int) -> tuple[int, int, int]:
+        #Фиолетовый фильтр (Сергей)
+        r = max(r, g, b)
+        g = 0    
+        return r, g, b
+
+
 class GreenFilter(Filter):
     def apply_to_pixel(self, r: int, g: int, b: int) -> tuple[int, int, int]:
         # плавно усиляет зелёный
