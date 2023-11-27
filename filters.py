@@ -36,6 +36,14 @@ class RedFilter(Filter):
         return r, g, b
 
 
+class Purple(Filter):
+    def apply_to_pixel(self, r: int, g: int, b: int) -> tuple[int, int, int]:
+        #Фиолетовый фильтр (Сергей)
+        r = max(r, g, b)
+        g = 0    
+        return r, g, b
+
+
 class GreenFilter(Filter):
     def apply_to_pixel(self, r: int, g: int, b: int) -> tuple[int, int, int]:
         # плавно усиляет зелёный
@@ -82,3 +90,20 @@ class BrightnessFilter:
         # увеличиваем или уменьшаем яркость изображения
         bright_image = self.image.point(lambda x: x * self.factor)
         return bright_image
+
+class BlackWhiteFilter:
+    def bw_filter():
+        img1 = img.convert('L')
+        global b 
+        b = input('Хотите использовать: Да/Нет\n')
+        if b.lower() != 'да' and b.lower() != 'нет':
+            while True:
+                b = input('Вы ввели что-то не то. Попробуйте еще раз\n')
+                if b.lower() == 'да' or b.lower() == 'нет':
+                    break
+        if b.lower() == 'нет':
+            pass
+        elif b.lower() == 'да':
+            img1.show()
+        else:
+            print('Вы ввели че-то не то')
