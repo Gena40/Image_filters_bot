@@ -1,4 +1,5 @@
 import math
+import random
 from PIL import Image
 
 
@@ -56,3 +57,17 @@ class InverseFilter(Filter):
         for color in (r, g, b):
             result.append(int((1 - math.exp(color / 255) / math.e) * 255))
         return tuple(result)
+
+
+class RandomBrightFilter(Filter):
+    """
+    Фильтр, который зеркалит изображение.
+    """
+    def __init__(self, img) -> None:
+        self.source_img = img.copy()
+
+    def apply_to_pixel(self, r: int, g: int, b: int) -> int:
+        new_pixel_r = min(r + random.randrange(100), 255)
+        new_pixel_g = min(g + random.randrange(100), 255)
+        new_pixel_b = min(b + random.randrange(100), 255)
+        return new_pixel_r, new_pixel_g, new_pixel_b
