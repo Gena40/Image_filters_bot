@@ -71,3 +71,14 @@ class RandomBrightFilter(Filter):
         new_pixel_g = min(g + random.randrange(100), 255)
         new_pixel_b = min(b + random.randrange(100), 255)
         return new_pixel_r, new_pixel_g, new_pixel_b
+
+# Фильтр Дианы
+class BrightnessFilter:
+    def __init__(self, factor):
+        self.factor = factor
+ 
+    def apply(self, image):
+        self.image = image
+        # увеличиваем или уменьшаем яркость изображения
+        bright_image = self.image.point(lambda x: x * self.factor)
+        return bright_image
