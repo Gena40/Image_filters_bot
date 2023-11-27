@@ -71,3 +71,21 @@ class RandomBrightFilter(Filter):
         new_pixel_g = min(g + random.randrange(100), 255)
         new_pixel_b = min(b + random.randrange(100), 255)
         return new_pixel_r, new_pixel_g, new_pixel_b
+
+
+class BlackWhiteFilter:
+    def bw_filter():
+        img1 = img.convert('L')
+        global b 
+        b = input('Хотите использовать: Да/Нет\n')
+        if b.lower() != 'да' and b.lower() != 'нет':
+            while True:
+                b = input('Вы ввели что-то не то. Попробуйте еще раз\n')
+                if b.lower() == 'да' or b.lower() == 'нет':
+                    break
+        if b.lower() == 'нет':
+            pass
+        elif b.lower() == 'да':
+            img1.show()
+        else:
+            print('Вы ввели че-то не то')
